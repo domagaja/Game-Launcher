@@ -16,8 +16,8 @@ namespace Game_Launcher_Test
     }
     internal class SpieleMethoden
     {
-        private List<ParameterDesSpiels> ParameterDesSpielsListe;
-
+        public List<ParameterDesSpiels> ParameterDesSpielsListe;
+        ParameterDesSpiels spiel;
 
         public SpieleMethoden()
         {
@@ -30,6 +30,8 @@ namespace Game_Launcher_Test
             {
                 throw new ArgumentNullException("Bruh, es gibt nichts zum Hinzufügen.");
             }
+
+            spiel = new ParameterDesSpiels();
             ParameterDesSpielsListe = new List<ParameterDesSpiels>();
             ParameterDesSpielsListe.Add(new ParameterDesSpiels()
             {
