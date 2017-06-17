@@ -16,7 +16,7 @@ namespace Game_Launcher_Test
     }
     internal class SpieleMethoden
     {
-        public List<ParameterDesSpiels> ParameterDesSpielsListe;
+        private List<ParameterDesSpiels> ParameterDesSpielsListe;
 
 
         public SpieleMethoden()
