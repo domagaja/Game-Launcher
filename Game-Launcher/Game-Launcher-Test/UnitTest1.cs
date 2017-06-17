@@ -24,7 +24,7 @@ namespace Game_Launcher_Test
             var spielhinzufügen = new SpieleMethoden();
             ParameterDesSpiels spiel = new ParameterDesSpiels();
             spielhinzufügen.SpielHinzufügen("GTA 5", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames", 6);
-            Assert.AreEqual("GTA 5", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames", 6, spielhinzufügen.ParameterDesSpielsListe);
+            Assert.AreEqual("GTA 5", spielhinzufügen.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
     }
 }
