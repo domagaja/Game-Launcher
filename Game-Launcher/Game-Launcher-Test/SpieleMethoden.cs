@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Xml;
+using System.Xml.Serialization;
 
 namespace Game_Launcher_Test
 {
@@ -25,9 +24,10 @@ namespace Game_Launcher_Test
 
         public void XmlSpeichern(string Pfad)
         {
+            
             XmlSerializer serializer = new XmlSerializer(typeof(SpieleMethoden));
-            FileStream fs = new FileStream(@p_stPath, FileMode.Create);
-            serializer.Serialize(fs, this);
+            FileStream fs = new FileStream(Pfad, FileMode.Create);
+            serializer.Serialize(fs, ParameterDesSpielsListe);
             fs.Close();
         }
 
@@ -59,11 +59,11 @@ namespace Game_Launcher_Test
 
         internal void SpielSpeichern(List<ParameterDesSpiels> list)
         {
-            if (list == null)
+            if (!list.Any() == false)
             {
-                throw new NullReferenceException("bruh, die Liste ist leer. Speichern nicht möglich :(");
+                throw new ArgumentNullException("bruh, die Liste ist leer. Speichern nicht möglich :(");
             }
-            
+            XmlSpeichern(@"Desktop");
         }
     }
 }

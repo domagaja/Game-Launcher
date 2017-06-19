@@ -28,11 +28,13 @@ namespace Game_Launcher_Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
+        [ExpectedException(typeof(ArgumentNullException))]
         public void Save_list_is_Null_Throws_ArgumentNullException_Testmethod()
         {
+
             ParameterDesSpiels spiel = new ParameterDesSpiels();
             var spielspeichern = new SpieleMethoden();
+            spielspeichern.SpielHinzufügen("GTA 5", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames", 6);
             spielspeichern.SpielSpeichern(spielspeichern.ParameterDesSpielsListe);
         }
 
