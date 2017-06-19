@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Text;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.IO;
+using System.Linq;
+using System.Xml;
 
 namespace Game_Launcher_Test
 {
@@ -16,8 +20,16 @@ namespace Game_Launcher_Test
     }
     internal class SpieleMethoden
     {
-        public List<ParameterDesSpiels> ParameterDesSpielsListe;
-        ParameterDesSpiels spiel;
+        internal List<ParameterDesSpiels> ParameterDesSpielsListe;
+        ParameterDesSpiels _spiel;
+
+        public void XmlSpeichern(string Pfad)
+        {
+            XmlSerializer serializer = new XmlSerializer(typeof(SpieleMethoden));
+            FileStream fs = new FileStream(@p_stPath, FileMode.Create);
+            serializer.Serialize(fs, this);
+            fs.Close();
+        }
 
         public SpieleMethoden()
         {
@@ -31,7 +43,7 @@ namespace Game_Launcher_Test
                 throw new ArgumentNullException("Bruh, es gibt nichts zum Hinzufügen.");
             }
 
-            spiel = new ParameterDesSpiels();
+            _spiel = new ParameterDesSpiels();
             ParameterDesSpielsListe = new List<ParameterDesSpiels>();
             ParameterDesSpielsListe.Add(new ParameterDesSpiels()
             {
@@ -43,6 +55,15 @@ namespace Game_Launcher_Test
                 Publisher = publisher,
                 UskEinstufung = Usk_Einstufung
             });
+        }
+
+        internal void SpielSpeichern(List<ParameterDesSpiels> list)
+        {
+            if (list == null)
+            {
+                throw new NullReferenceException("bruh, die Liste ist leer. Speichern nicht möglich :(");
+            }
+            
         }
     }
 }
