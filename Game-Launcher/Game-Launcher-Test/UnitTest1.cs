@@ -42,7 +42,8 @@ namespace Game_Launcher_Test
         {
             var spiel = new SpieleMethoden();
             spiel.SpielHinzufügen("GTA 5", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames",6);
-            spiel.SpielHinzufügen("GTA 6", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames", 6);
+            spiel.SpielHinzufügen("Metin 2", "20.06.2017", "21.06.2017", "Desktop", "MMORPG", "Vincesco", 12);
+            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", "G:\\Tibia", "MMORPG", "Cipsoft", 12);
             spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
         }
     }

@@ -57,12 +57,15 @@ namespace Game_Launcher_Test
             for (int i = 0; i < list.Count; i++)
             {
                 myRoot.AppendChild(doc.CreateElement(list[i].TitelDesSpiels.Replace(" ", "_")));
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("Installations_Datum")).InnerText = list[i].InstallationsDatum;
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("ZuletztGespielt")).InnerText = list[i].ZuletztGespielt;
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("InstallationsPfad")).InnerText = list[i].InstallationsPfad;
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("Kategorie")).InnerText = list[i].Kategorie;
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("Publisher")).InnerText = list[i].Publisher;
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("UskEinstufung")).InnerText = list[i].UskEinstufung.ToString();
             }
-            // myRoot.AppendChild(doc.CreateElement(list[0].TitelDesSpiels.Replace(" ", "_")));
-
-            //  myRoot.AppendChild(doc.CreateElement("zweitesSpiel"));
-            //  myRoot.SelectSingleNode("ErstesSpiel").Attributes.Append(doc.CreateAttribute("Titel")).InnerText = "GTA 5";
-            //  myRoot.SelectSingleNode("ErstesSpiel").Attributes.Append(doc.CreateAttribute("Zuletztgespielt")).InnerText = "14.06.2017";
+           
+           
             doc.Save(@"..\..\SpieleListe.xml");
         }
     }
