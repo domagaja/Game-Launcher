@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Xml;
 using System.Xml.Serialization;
+using System.Xml.Linq;
+
 
 namespace Game_Launcher_Test
 {
@@ -19,21 +21,27 @@ namespace Game_Launcher_Test
     }
     internal class SpieleMethoden
     {
-        internal List<ParameterDesSpiels> ParameterDesSpielsListe;
-        ParameterDesSpiels _spiel;
-
-        public void XmlSpeichern(string Pfad)
+        public void XMLDocumentErstellen_Laden()
         {
-            
-            XmlSerializer serializer = new XmlSerializer(typeof(SpieleMethoden));
-            FileStream fs = new FileStream(Pfad, FileMode.Create);
-            serializer.Serialize(fs, ParameterDesSpielsListe);
-            fs.Close();
+
+            XmlDocument doc = new XmlDocument();            //Instanz eines XML Dokuments in den RAM laden
+            XmlNode myRoot;                                 //Neue Instanz eines XML Knotens reservieren
+            myRoot = doc.CreateElement("HelloXMLWorld");    //XML Element "HelloXMLWorld" in den Reservierten Knoten laden
+            doc.AppendChild(myRoot);                        //Knoten direkt an das XML Dokument anheften (Root Element)
+            doc.Save(@"c:\helloxmlworld.xml");              //Speichern des im RAM liegenden XML Dokuments
+        }
+        
+        
+        public List<ParameterDesSpiels> ParameterDesSpielsListe;
+        internal ParameterDesSpiels _spiel;
+        public void XmlSpeichern()
+        {
+            XMLDocumentErstellen_Laden();
         }
 
         public SpieleMethoden()
         {
-            
+
         }
 
         internal void SpielHinzufügen(string Titel, string Install_Datum, string Zuletzt_Gespielt, string Install_Pfad, string kategorie, string publisher, int Usk_Einstufung)
@@ -59,11 +67,11 @@ namespace Game_Launcher_Test
 
         internal void SpielSpeichern(List<ParameterDesSpiels> list)
         {
-            if (!list.Any() == false)
+            if (list.Any() == false)
             {
                 throw new ArgumentNullException("bruh, die Liste ist leer. Speichern nicht möglich :(");
             }
-            XmlSpeichern(@"Desktop");
+            XmlSpeichern();
         }
     }
 }
