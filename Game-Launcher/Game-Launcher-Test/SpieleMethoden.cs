@@ -64,9 +64,8 @@ namespace Game_Launcher_Test
                 myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("Publisher")).InnerText = list[i].Publisher;
                 myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("UskEinstufung")).InnerText = list[i].UskEinstufung.ToString();
             }
-           
-           
             doc.Save(@"..\..\SpieleListe.xml");
+            //https://jmcblog.de/2012/06/01/xml-datei-auslesen/
         }
     }
 }
