@@ -28,7 +28,7 @@ namespace Game_Launcher_Test
             XmlNode myRoot;                                 //Neue Instanz eines XML Knotens reservieren
             myRoot = doc.CreateElement("HelloXMLWorld");    //XML Element "HelloXMLWorld" in den Reservierten Knoten laden
             doc.AppendChild(myRoot);                        //Knoten direkt an das XML Dokument anheften (Root Element)
-            doc.Save(@"c:\helloxmlworld.xml");              //Speichern des im RAM liegenden XML Dokuments
+            doc.Save(@"helloxmlworld.xml");              //Speichern des im RAM liegenden XML Dokuments
         }
         
         
