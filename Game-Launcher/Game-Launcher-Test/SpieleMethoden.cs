@@ -11,6 +11,7 @@ namespace Game_Launcher_Test
 {
     internal class ParameterDesSpiels
     {
+       public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
        public string TitelDesSpiels { get; set; }
        public string InstallationsDatum { get; set; }
        public string ZuletztGespielt { get; set; }
@@ -28,7 +29,7 @@ namespace Game_Launcher_Test
             XmlNode myRoot;                                 //Neue Instanz eines XML Knotens reservieren
             myRoot = doc.CreateElement("HelloXMLWorld");    //XML Element "HelloXMLWorld" in den Reservierten Knoten laden
             doc.AppendChild(myRoot);                        //Knoten direkt an das XML Dokument anheften (Root Element)
-            doc.Save(@"c:\helloxmlworld.xml");              //Speichern des im RAM liegenden XML Dokuments
+            doc.Save(@"helloxmlworld.xml");              //Speichern des im RAM liegenden XML Dokuments
         }
         
         
@@ -50,10 +51,7 @@ namespace Game_Launcher_Test
             {
                 throw new ArgumentNullException("Bruh, es gibt nichts zum Hinzufügen.");
             }
-
-            _spiel = new ParameterDesSpiels();
-            ParameterDesSpielsListe = new List<ParameterDesSpiels>();
-            ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+            Spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
             {
                 TitelDesSpiels = Titel,
                 InstallationsDatum = Install_Datum,
@@ -62,7 +60,8 @@ namespace Game_Launcher_Test
                 Kategorie = kategorie,
                 Publisher = publisher,
                 UskEinstufung = Usk_Einstufung
-            });
+            }); 
+
         }
 
         internal void SpielSpeichern(List<ParameterDesSpiels> list)
@@ -71,7 +70,21 @@ namespace Game_Launcher_Test
             {
                 throw new ArgumentNullException("bruh, die Liste ist leer. Speichern nicht möglich :(");
             }
-            XmlSpeichern();
+            //  XmlSpeichern();
+
+            XmlDocument doc = new XmlDocument();
+            XmlNode myRoot;
+            doc.AppendChild(myRoot = doc.CreateElement("Spiele"));
+            for (int i = 0; i < list.Count; i++)
+            {
+                myRoot.AppendChild(doc.CreateElement(list[i].TitelDesSpiels.Replace(" ", "_")));
+            }
+            // myRoot.AppendChild(doc.CreateElement(list[0].TitelDesSpiels.Replace(" ", "_")));
+
+            //  myRoot.AppendChild(doc.CreateElement("zweitesSpiel"));
+            //  myRoot.SelectSingleNode("ErstesSpiel").Attributes.Append(doc.CreateAttribute("Titel")).InnerText = "GTA 5";
+            //  myRoot.SelectSingleNode("ErstesSpiel").Attributes.Append(doc.CreateAttribute("Zuletztgespielt")).InnerText = "14.06.2017";
+            doc.Save(@"..\..\SpieleListe.xml");
         }
     }
 }
