@@ -24,9 +24,8 @@ namespace Game_Launcher_Test
         {
 
             var spiel = new SpieleMethoden();
-            ParameterDesSpiels Spiel = new ParameterDesSpiels();
             spiel.SpielHinzufügen("GTA 5", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames",6);
-            Assert.AreEqual("GTA 5", Spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
+            Assert.AreEqual("GTA 5", spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
 
         [TestMethod]
@@ -42,10 +41,9 @@ namespace Game_Launcher_Test
         public void Die_Liste_mit_XML_Speichern_TestMethod()
         {
             var spiel = new SpieleMethoden();
-            ParameterDesSpiels Spiel = new ParameterDesSpiels();
             spiel.SpielHinzufügen("GTA 5", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames",6);
             spiel.SpielHinzufügen("GTA 6", "17.06.2017", "18.06.2017", "Hier", "MOBA", "PhilippGames", 6);
-            spiel.SpielSpeichern(Spiel.ParameterDesSpielsListe);
+            spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
         }
     }
 }

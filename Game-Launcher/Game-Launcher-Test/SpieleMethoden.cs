@@ -11,7 +11,7 @@ namespace Game_Launcher_Test
 {
     internal class ParameterDesSpiels
     {
-       public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
+      
        public string TitelDesSpiels { get; set; }
        public string InstallationsDatum { get; set; }
        public string ZuletztGespielt { get; set; }
@@ -22,28 +22,7 @@ namespace Game_Launcher_Test
     }
     internal class SpieleMethoden
     {
-        public void XMLDocumentErstellen_Laden()
-        {
-
-            XmlDocument doc = new XmlDocument();            //Instanz eines XML Dokuments in den RAM laden
-            XmlNode myRoot;                                 //Neue Instanz eines XML Knotens reservieren
-            myRoot = doc.CreateElement("HelloXMLWorld");    //XML Element "HelloXMLWorld" in den Reservierten Knoten laden
-            doc.AppendChild(myRoot);                        //Knoten direkt an das XML Dokument anheften (Root Element)
-            doc.Save(@"helloxmlworld.xml");              //Speichern des im RAM liegenden XML Dokuments
-        }
-        
-        
-        public List<ParameterDesSpiels> ParameterDesSpielsListe;
-        internal ParameterDesSpiels _spiel;
-        public void XmlSpeichern()
-        {
-            XMLDocumentErstellen_Laden();
-        }
-
-        public SpieleMethoden()
-        {
-
-        }
+         public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
 
         internal void SpielHinzufügen(string Titel, string Install_Datum, string Zuletzt_Gespielt, string Install_Pfad, string kategorie, string publisher, int Usk_Einstufung)
         {
@@ -51,7 +30,7 @@ namespace Game_Launcher_Test
             {
                 throw new ArgumentNullException("Bruh, es gibt nichts zum Hinzufügen.");
             }
-            Spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+            ParameterDesSpielsListe.Add(new ParameterDesSpiels()
             {
                 TitelDesSpiels = Titel,
                 InstallationsDatum = Install_Datum,
