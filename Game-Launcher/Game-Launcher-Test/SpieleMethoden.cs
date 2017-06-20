@@ -29,8 +29,6 @@ namespace Game_Launcher_Test
             {
                 throw new ArgumentNullException("Bruh, es gibt nichts zum Hinzufügen.");
             }
-            
-            Spiel.ParameterDesSpielsListe =new List<ParameterDesSpiels>();
             Spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
             {
                 TitelDesSpiels = Titel,
@@ -40,7 +38,8 @@ namespace Game_Launcher_Test
                 Kategorie = kategorie,
                 Publisher = publisher,
                 UskEinstufung = Usk_Einstufung
-            });
+            }); 
+
         }
 
         internal void SpielSpeichern(List<ParameterDesSpiels> list)
