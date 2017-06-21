@@ -30,6 +30,10 @@ namespace Game_Launcher_Test
             {
                 throw new ArgumentNullException("Bruh, es gibt nichts zum Hinzufügen.");
             }
+            if (!File.Exists(Install_Pfad))
+            {
+                throw new FileNotFoundException("Bruh, im Installations Pfad gibt es Kein Spiel");
+            }
             ParameterDesSpielsListe.Add(new ParameterDesSpiels()
             {
                 TitelDesSpiels = Titel,
@@ -49,7 +53,6 @@ namespace Game_Launcher_Test
             {
                 throw new ArgumentNullException("bruh, die Liste ist leer. Speichern nicht möglich :(");
             }
-            //  XmlSpeichern();
 
             XmlDocument doc = new XmlDocument();
             XmlNode myRoot;
@@ -66,6 +69,15 @@ namespace Game_Launcher_Test
             }
             doc.Save(@"..\..\SpieleListe.xml");
             //https://jmcblog.de/2012/06/01/xml-datei-auslesen/
+        }
+
+        internal void SpielLaden(List<ParameterDesSpiels> list)
+        {
+            if (list.Any() == true)
+            {
+                throw new NotImplementedException();     
+            }
+           
         }
     }
 }
