@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml;
@@ -22,7 +23,8 @@ namespace Game_Launcher_Test
     }
     internal class SpieleMethoden
     {
-         public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
+        bool ListeSollLeerSein = false;
+        public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
 
         internal void SpielHinzufügen(string Titel, string Install_Datum, string Zuletzt_Gespielt, string Install_Pfad, string kategorie, string publisher, int Usk_Einstufung)
         {
@@ -49,18 +51,19 @@ namespace Game_Launcher_Test
 
         internal void SpielSpeichern(List<ParameterDesSpiels> list)
         {
-            if (list.Any() == false)
+            if (list.Any() == false && ListeSollLeerSein == false)
             {
                 throw new ArgumentNullException("bruh, die Liste ist leer. Speichern nicht möglich :(");
             }
-
+            ListeSollLeerSein = false;
             XmlDocument doc = new XmlDocument();
             XmlNode myRoot;
             doc.AppendChild(myRoot = doc.CreateElement("Spiele"));
             for (int i = 0; i < list.Count; i++)
             {
                 myRoot.AppendChild(doc.CreateElement(list[i].TitelDesSpiels.Replace(" ", "_")));
-                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("Installations_Datum")).InnerText = list[i].InstallationsDatum;
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("Titel")).InnerText = list[i].TitelDesSpiels;
+                myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("InstallationsDatum")).InnerText = list[i].InstallationsDatum;
                 myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("ZuletztGespielt")).InnerText = list[i].ZuletztGespielt;
                 myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("InstallationsPfad")).InnerText = list[i].InstallationsPfad;
                 myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("Kategorie")).InnerText = list[i].Kategorie;
@@ -68,32 +71,59 @@ namespace Game_Launcher_Test
                 myRoot.SelectSingleNode(list[i].TitelDesSpiels.Replace(" ", "_")).Attributes.Append(doc.CreateAttribute("UskEinstufung")).InnerText = list[i].UskEinstufung.ToString();
             }
             doc.Save(@"..\..\SpieleListe.xml");
-            //https://jmcblog.de/2012/06/01/xml-datei-auslesen/
+            
         }
 
-        internal void SpielLaden(List<ParameterDesSpiels> list)
+        internal void SpielStarten(string Titel)
         {
-            if (list.Any() == true)
+            var SpielZuÖffnen = ParameterDesSpielsListe.SingleOrDefault(r => r.TitelDesSpiels == Titel);
+            if(!File.Exists(SpielZuÖffnen.InstallationsPfad))
             {
-                throw new NotImplementedException();     
+                throw new FileNotFoundException("Bruh, dieses Spiel existiert an diesem Ort nicht");
             }
-            XmlDocument doc = new XmlDocument();
-            doc.Load(@"..\..\SpieleListe.xml");
-            XmlElement root = doc.DocumentElement;
-            foreach (XmlNode daten in root.ChildNodes)
+            if(SpielZuÖffnen.InstallationsPfad.Length == 0)
             {
-                ParameterDesSpielsListe.Add(new ParameterDesSpiels()
-                {
-                    TitelDesSpiels = daten.InnerText,
-                    InstallationsDatum = daten.Attributes["Installations_Datum"].InnerText,
-                    ZuletztGespielt = daten.Attributes["ZuletztGespielt"].InnerText,
-                    InstallationsPfad = daten.Attributes["InstallationsPfad"].InnerText,
-                    Kategorie = daten.Attributes["Kategorie"].InnerText,
-                    Publisher = daten.Attributes["Publisher"].InnerText,
-                    UskEinstufung = Convert.ToInt32(daten.Attributes["UskEinstufung"].InnerText)
-                }); 
-            }
 
+            }
+            Process.Start(SpielZuÖffnen.InstallationsPfad);
+        }
+
+        internal void SpielLöschen(string Titel)
+        {
+            if(!ParameterDesSpielsListe.Any())
+            {
+                throw new ArgumentException("Es gibt nichts zum löschen, da die liste leer ist");
+            }
+            var ItemZuLöschen = ParameterDesSpielsListe.SingleOrDefault(r => r.TitelDesSpiels == Titel);
+            ParameterDesSpielsListe.Remove(ItemZuLöschen);
+            ListeSollLeerSein = true;
+        }
+
+        internal void SpielLaden(string XMLPfad,List<ParameterDesSpiels> list)
+        {
+            if (!File.Exists(XMLPfad))
+            {
+                throw new FileNotFoundException("Die Liste die du laden willst existiert nicht, bruh");     
+            }
+            else
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.Load(XMLPfad);
+                XmlElement root = doc.DocumentElement;
+                foreach (XmlNode daten in root.ChildNodes)
+                {
+                    list.Add(new ParameterDesSpiels()
+                    {
+                        TitelDesSpiels = daten.SelectSingleNode("League_of_Legends").Attributes["Titel"].InnerText.Replace(" ", "_"),
+                        InstallationsDatum = daten.SelectSingleNode("League_of_Legends").Attributes["InstallationsDatum"].InnerText.Replace(" ", "_"),
+                        ZuletztGespielt = daten.SelectSingleNode("League_of_Legends").Attributes["ZuletztGespielt"].InnerText.Replace(" ", "_"),
+                        InstallationsPfad = daten.SelectSingleNode("League_of_Legends").Attributes["InstallationsPfad"].InnerText.Replace(" ", "_"),
+                        Kategorie = daten.SelectSingleNode("League_of_Legends").Attributes["Kategorie"].InnerText.Replace(" ", "_"),
+                        Publisher = daten.SelectSingleNode("League_of_Legends").Attributes["Publisher"].InnerText.Replace(" ", "_"),
+                        UskEinstufung = Convert.ToInt32(daten.SelectSingleNode("League_of_Legends").Attributes["UskEinstufung"].InnerText.Replace(" ", "_"))
+                    });
+                }
+            }
         }
     }
 }

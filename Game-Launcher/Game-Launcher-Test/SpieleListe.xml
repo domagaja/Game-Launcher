@@ -1,5 +1,3 @@
 <Spiele>
-  <GTA_5 Installations_Datum="17.06.2017" ZuletztGespielt="18.06.2017" InstallationsPfad="C:\Riot Games\League of Legends\lol.launcher.exe" Kategorie="MOBA" Publisher="PhilippGames" UskEinstufung="6" />
-  <Metin_2 Installations_Datum="20.06.2017" ZuletztGespielt="21.06.2017" InstallationsPfad="C:\Riot Games\League of Legends\lol.launcher.exe" Kategorie="MMORPG" Publisher="Vincesco" UskEinstufung="12" />
-  <Tibia Installations_Datum="14.06.1995" ZuletztGespielt="07.06.2017" InstallationsPfad="C:\Riot Games\League of Legends\lol.launcher.exe" Kategorie="MMORPG" Publisher="Cipsoft" UskEinstufung="12" />
+  <League_of_Legends Titel="League of Legends" Installations_Datum="17.06.2017" ZuletztGespielt="18.06.2017" InstallationsPfad="C:\League of Legends\leagueClient.exe" Kategorie="MOBA" Publisher="Riot Games" UskEinstufung="12" />
 </Spiele>
