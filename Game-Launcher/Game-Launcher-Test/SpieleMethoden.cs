@@ -77,7 +77,23 @@ namespace Game_Launcher_Test
             {
                 throw new NotImplementedException();     
             }
-           
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"..\..\SpieleListe.xml");
+            XmlElement root = doc.DocumentElement;
+            foreach (XmlNode daten in root.ChildNodes)
+            {
+                ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+                {
+                    TitelDesSpiels = daten.InnerText,
+                    InstallationsDatum = daten.Attributes["Installations_Datum"].InnerText,
+                    ZuletztGespielt = daten.Attributes["ZuletztGespielt"].InnerText,
+                    InstallationsPfad = daten.Attributes["InstallationsPfad"].InnerText,
+                    Kategorie = daten.Attributes["Kategorie"].InnerText,
+                    Publisher = daten.Attributes["Publisher"].InnerText,
+                    UskEinstufung = Convert.ToInt32(daten.Attributes["UskEinstufung"].InnerText)
+                }); 
+            }
+
         }
     }
 }
