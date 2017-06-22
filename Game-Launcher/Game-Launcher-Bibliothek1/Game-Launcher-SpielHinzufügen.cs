@@ -74,7 +74,7 @@ namespace Game_Launcher_Bibliothek1
             {
                 spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
                 Game_Launcher_GUI form1 = new Game_Launcher_GUI();
-                form1.ListeAktualisieren();
+               // form1.ListeAktualisieren();
                 Close();
             }
         }

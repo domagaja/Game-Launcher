@@ -14,7 +14,7 @@ namespace Game_Launcher_Bibliothek1
 {
     public partial class Game_Launcher_GUI : Form
     {
-        SpieleMethoden spiel = new SpieleMethoden();
+        
 #if Scale
         int _cursX = 0;
         int _cursY = 0;
@@ -25,18 +25,29 @@ namespace Game_Launcher_Bibliothek1
             
             
         }
-        public void ListeAktualisieren()
-        {
-            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
-            spiel.SpielLaden(spiel.ParameterDesSpielsListe);
-            SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
-            SpieleListeBox.DisplayMember = "Titel";
-        }
+        //public void ListeAktualisieren()
+        //{
+        //    SpieleMethoden spiel = new SpieleMethoden();
+        //    spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
+        //    spiel.SpielLaden(spiel.ParameterDesSpielsListe);
+        //    SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
+        //    SpieleListeBox.DisplayMember = "Titel";
+        //}
         private void Form1_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
             Paint += new PaintEventHandler(Form1_Paint);
-            ListeAktualisieren();
+            SpieleMethoden spiel = new SpieleMethoden();
+            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
+            spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
+            spiel.ParameterDesSpielsListe.Clear();
+            spiel.ListeSollLeerSein = true;
+            spiel.SpielLaden(spiel.ParameterDesSpielsListe);
+            SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
+          
+
+
+            //  ListeAktualisieren();
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -99,6 +110,16 @@ namespace Game_Launcher_Bibliothek1
         }
 
         private void SpieleListeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+                       SpieleListeBox.DisplayMember = "TitelDesSpiels";
+        }
+
+        private void SpieleListeBox_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void SpieleListeBox_DisplayMemberChanged(object sender, EventArgs e)
         {
 
         }

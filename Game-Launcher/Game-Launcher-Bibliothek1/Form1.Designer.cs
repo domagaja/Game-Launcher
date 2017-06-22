@@ -47,6 +47,8 @@
             this.SpieleListeBox.Size = new System.Drawing.Size(422, 368);
             this.SpieleListeBox.TabIndex = 0;
             this.SpieleListeBox.SelectedIndexChanged += new System.EventHandler(this.SpieleListeBox_SelectedIndexChanged);
+            this.SpieleListeBox.DisplayMemberChanged += new System.EventHandler(this.SpieleListeBox_DisplayMemberChanged);
+            this.SpieleListeBox.SelectedValueChanged += new System.EventHandler(this.SpieleListeBox_SelectedValueChanged);
             // 
             // Game_Launcher_GUI
             // 
