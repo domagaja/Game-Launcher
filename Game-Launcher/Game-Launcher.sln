@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game-Launcher-Test", "Game-Launcher-Test\Game-Launcher-Test.csproj", "{A26915E6-7AD6-4C35-8F1A-974E8D49578F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game-Laucher-Bibliothek", "Game-Laucher-Bibliothek\Game-Laucher-Bibliothek.csproj", "{DF1E901A-D521-4D29-8362-82CB77A70AEE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Game-Launcher-Bibliothek1", "Game-Launcher-Bibliothek1\Game-Launcher-Bibliothek1.csproj", "{12B55389-2FE0-4668-A610-46DEF60A8000}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{A26915E6-7AD6-4C35-8F1A-974E8D49578F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A26915E6-7AD6-4C35-8F1A-974E8D49578F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A26915E6-7AD6-4C35-8F1A-974E8D49578F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DF1E901A-D521-4D29-8362-82CB77A70AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DF1E901A-D521-4D29-8362-82CB77A70AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DF1E901A-D521-4D29-8362-82CB77A70AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DF1E901A-D521-4D29-8362-82CB77A70AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B55389-2FE0-4668-A610-46DEF60A8000}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B55389-2FE0-4668-A610-46DEF60A8000}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B55389-2FE0-4668-A610-46DEF60A8000}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B55389-2FE0-4668-A610-46DEF60A8000}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using System.Xml;
-using Game_Launcher_Bibliothek;
+using Game_Launcher_Bibliothek1;
 
-namespace Game_Launcher_Bibliothek
+namespace Game_Launcher_Test
 {
     [TestClass]
     public class UnitTest1

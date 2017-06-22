@@ -8,7 +8,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Game_Launcher_Test</RootNamespace>
     <AssemblyName>Game-Launcher-Test</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -16,6 +16,7 @@
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
     <IsCodedUITest>False</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -56,9 +57,9 @@
     <Compile Include="UnitTest1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Game-Laucher-Bibliothek\Game-Laucher-Bibliothek.csproj">
-      <Project>{df1e901a-d521-4d29-8362-82cb77a70aee}</Project>
-      <Name>Game-Laucher-Bibliothek</Name>
+    <ProjectReference Include="..\Game-Launcher-Bibliothek1\Game-Launcher-Bibliothek1.csproj">
+      <Project>{12b55389-2fe0-4668-a610-46def60a8000}</Project>
+      <Name>Game-Launcher-Bibliothek1</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
