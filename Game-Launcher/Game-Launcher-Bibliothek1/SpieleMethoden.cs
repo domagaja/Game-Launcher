@@ -20,7 +20,7 @@ namespace Game_Launcher_Bibliothek1
     }
     public class SpieleMethoden
     {
-        bool ListeSollLeerSein = false;
+        public bool ListeSollLeerSein = false;
         public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
 
         public void SpielHinzufügen(string Titel, string Install_Datum, string Zuletzt_Gespielt, string Install_Pfad, string kategorie, string publisher, int Usk_Einstufung)
@@ -96,17 +96,16 @@ namespace Game_Launcher_Bibliothek1
             ListeSollLeerSein = true;
         }
 
-        public void SpielLaden(string XMLPfad,List<ParameterDesSpiels> list)
+        public void SpielLaden(List<ParameterDesSpiels> list)
         {
-            
-            if (!File.Exists(XMLPfad))
+            if (!list.Any() && ListeSollLeerSein == false)
             {
-                throw new FileNotFoundException("Die Liste die du laden willst existiert nicht, bruh");     
+                throw new ArgumentNullException("Die Liste die du laden willst existiert nicht, bruh");     
             }
             else
             {
                 XmlDocument doc = new XmlDocument();
-                doc.Load(XMLPfad);
+                doc.Load(@"..\..\SpieleListe.xml");
                 XmlElement root = doc.DocumentElement;
                 foreach (XmlNode daten in root.ChildNodes)
                 {

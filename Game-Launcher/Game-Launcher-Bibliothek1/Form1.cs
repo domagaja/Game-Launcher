@@ -14,6 +14,7 @@ namespace Game_Launcher_Bibliothek1
 {
     public partial class Game_Launcher_GUI : Form
     {
+        SpieleMethoden spiel = new SpieleMethoden();
 #if Scale
         int _cursX = 0;
         int _cursY = 0;
@@ -24,11 +25,18 @@ namespace Game_Launcher_Bibliothek1
             
             
         }
-
+        public void ListeAktualisieren()
+        {
+            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
+            spiel.SpielLaden(spiel.ParameterDesSpielsListe);
+            SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
+            SpieleListeBox.DisplayMember = "Titel";
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
             Paint += new PaintEventHandler(Form1_Paint);
+            ListeAktualisieren();
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
@@ -65,7 +73,7 @@ namespace Game_Launcher_Bibliothek1
             _cursX = e.X;
             _cursY = e.Y;
 #endif
-            this.Refresh();
+            
         }
         
 
@@ -73,8 +81,8 @@ namespace Game_Launcher_Bibliothek1
         {
             if (e.X > 10 && e.X < 92 && e.Y > 457 && e.Y < 492)
             {
-                Zwischenklasse zwischenklasse = new Zwischenklasse();
-                zwischenklasse.Spielhinzufügen();
+                Game_Launcher_SpielHinzufügen form2 = new Game_Launcher_SpielHinzufügen();
+                form2.Show();
             }
             else if (e.X > 110 && e.X < 192 && e.Y > 457 && e.Y < 492)
             {
@@ -88,6 +96,11 @@ namespace Game_Launcher_Bibliothek1
             {
                 MessageBox.Show("Spiel Starten");
             }
+        }
+
+        private void SpieleListeBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
