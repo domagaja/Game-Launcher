@@ -1,1 +1,3 @@
-<Spiele />
+<Spiele>
+  <League_of_Legends Titel="League of Legends" Installations_Datum="17.06.2017" ZuletztGespielt="18.06.2017" InstallationsPfad="C:\League of Legends\leagueClient.exe" Kategorie="MOBA" Publisher="Riot Games" UskEinstufung="12" />
+</Spiele>

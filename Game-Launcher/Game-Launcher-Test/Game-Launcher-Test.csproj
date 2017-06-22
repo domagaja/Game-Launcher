@@ -53,8 +53,13 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpieleMethoden.cs" />
     <Compile Include="UnitTest1.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Game-Laucher-Bibliothek\Game-Laucher-Bibliothek.csproj">
+      <Project>{df1e901a-d521-4d29-8362-82cb77a70aee}</Project>
+      <Name>Game-Laucher-Bibliothek</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

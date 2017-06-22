@@ -4,26 +4,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Diagnostics;
 using System.Xml;
+using Game_Launcher_Bibliothek;
 
-namespace Game_Launcher_Test
+namespace Game_Launcher_Bibliothek
 {
     [TestClass]
     public class UnitTest1
     {
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Game_Added_Parameter_is_Null_Throws_ArgumentNullException_TestMethod()
+        public void Spiel_Hinzufügen_Hat_Keine_Argumente_Throws_ArgumentNullException_TestMethod()
         {
             var spiel = new SpieleMethoden();
             spiel.SpielHinzufügen("GTA 5","17.06.2017","18.06.2017","Hier",null,"PhilippGames",5);
-        }
-        [TestMethod]
-        public void Ist_Die_Liste_befüllt_worden_Testmethod()
-        {
-
-            var spiel = new SpieleMethoden();
-            spiel.SpielHinzufügen("GTA 5", "17.06.2017", "18.06.2017", @"C:\League of Legends\leagueClient.exe", "MOBA", "PhilippGames", 6);
-            Assert.AreEqual("GTA 5", spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
 
         [TestMethod]
@@ -32,6 +25,66 @@ namespace Game_Launcher_Test
         {
             var spiel = new SpieleMethoden();
             spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void Im_InstallationsPfad_gibt_es_kein_Spiel_throws_FileNotFoundException()
+        {
+            SpieleMethoden spiel = new SpieleMethoden();
+            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"kakapipi", "MMORPG", "Cipsoft", 12);
+
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void Liste_Zum_Laden_Nicht_Gefunden_Throws_FileNotFoundException()
+        {
+            var spiel = new SpieleMethoden();
+            spiel.SpielLaden(@"..\..\SpieladeListe.xml", spiel.ParameterDesSpielsListe);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void Element_aus_der_Liste_Löschen_throws_ArgumentException()
+        {
+            var spiel = new SpieleMethoden();
+            spiel.SpielLöschen("Tibia");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void Spiel_Aus_einem_Nicht_existierenden_Pfad_Starten_throws_FileNotFoundException()
+        {
+            var spiel = new SpieleMethoden();
+            spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+            {
+                TitelDesSpiels = "League of Legends",
+                InstallationsDatum = "17.06.2017",
+                ZuletztGespielt = "18.06.2017",
+                InstallationsPfad = @"Falscher\Pfad",
+                Kategorie = "MOBA",
+                Publisher = "Riot Games",
+                UskEinstufung = 12
+            });
+            spiel.SpielStarten("League of Legends");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(NullReferenceException))]
+        public void Spiel_besitzt_kein_Pfad_Throws_NullReferenceException()
+        {
+            var spiel = new SpieleMethoden();
+            spiel.SpielStarten("Akte_X");
+        }
+
+        [TestMethod]
+        public void Ist_Die_Liste_befüllt_worden_Testmethod()
+        {
+
+            var spiel = new SpieleMethoden();
+            spiel.SpielHinzufügen("GTA 5", "17.06.2017", "18.06.2017", @"C:\League of Legends\leagueClient.exe", "MOBA", "PhilippGames", 6);
+            Assert.AreEqual("GTA 5", spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
 
         [TestMethod]
@@ -78,16 +131,7 @@ namespace Game_Launcher_Test
             }
             Assert.AreEqual("League of Legends",spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
-
-        [TestMethod]
-        [ExpectedException(typeof(FileNotFoundException))]
-        public void Im_InstallationsPfad_gibt_es_kein_Spiel_throws_FileNotFoundException()
-        {
-            SpieleMethoden spiel = new SpieleMethoden();
-            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"kakapipi", "MMORPG", "Cipsoft", 12);
-
-        }
-
+        
         [TestMethod]
         public void Die_XML_Datei_in_Liste_laden_Testmethod()
         {
@@ -123,20 +167,7 @@ namespace Game_Launcher_Test
             spiel.SpielLaden(@"..\..\SpieleListe.xml",spiel.ParameterDesSpielsListe);
             Assert.AreEqual("League of Legends",spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
-        [TestMethod]
-        [ExpectedException(typeof(FileNotFoundException))]
-        public void Liste_Zum_Laden_Nicht_Gefunden_Throws_FileNotFoundException()
-        {
-            var spiel = new SpieleMethoden();
-            spiel.SpielLaden(@"..\..\SpieladeListe.xml", spiel.ParameterDesSpielsListe);
-        }
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
-        public void Element_aus_der_Liste_Löschen_throws_ArgumentException()
-        {
-            var spiel = new SpieleMethoden();
-            spiel.SpielLöschen("Tibia");
-        }
+      
         [TestMethod]
         public void Element_Löschen_TestMethod()
         {
@@ -154,30 +185,7 @@ namespace Game_Launcher_Test
             spiel.SpielLöschen("League of Legends");
             Assert.AreEqual(0, spiel.ParameterDesSpielsListe.Count);
         }
-        [TestMethod]
-        [ExpectedException(typeof(FileNotFoundException))]
-        public void Spiel_Aus_einem_Nicht_existierenden_Pfad_Starten_throws_FileNotFoundException()
-        {
-            var spiel = new SpieleMethoden();
-            spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
-            {
-                TitelDesSpiels = "League of Legends",
-                InstallationsDatum = "17.06.2017",
-                ZuletztGespielt = "18.06.2017",
-                InstallationsPfad = @"Falscher\Pfad",
-                Kategorie = "MOBA",
-                Publisher = "Riot Games",
-                UskEinstufung = 12
-            });
-            spiel.SpielStarten("League of Legends");
-        }
-        [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
-        public void Spiel_besitzt_kein_Pfad_Throws_NullReferenceException()
-        {
-            var spiel = new SpieleMethoden();
-            spiel.SpielStarten("Akte_X");
-        }
+
         [TestMethod]
         public void Spiel_Starten_TestMethod()
         {

@@ -4,13 +4,10 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Xml;
-using System.Xml.Serialization;
-using System.Xml.Linq;
 
-
-namespace Game_Launcher_Test
+namespace Game_Launcher_Bibliothek
 {
-    internal class ParameterDesSpiels
+    public class ParameterDesSpiels
     {
       
        public string TitelDesSpiels { get; set; }
@@ -21,12 +18,12 @@ namespace Game_Launcher_Test
        public string Publisher { get; set; }
        public int UskEinstufung { get; set; }
     }
-    internal class SpieleMethoden
+    public class SpieleMethoden
     {
         bool ListeSollLeerSein = false;
         public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
 
-        internal void SpielHinzufügen(string Titel, string Install_Datum, string Zuletzt_Gespielt, string Install_Pfad, string kategorie, string publisher, int Usk_Einstufung)
+        public void SpielHinzufügen(string Titel, string Install_Datum, string Zuletzt_Gespielt, string Install_Pfad, string kategorie, string publisher, int Usk_Einstufung)
         {
             if (Titel == null || Install_Datum == null || Zuletzt_Gespielt == null || Install_Pfad == null || kategorie == null|| publisher == null || Usk_Einstufung != 0  && Usk_Einstufung != 6 && Usk_Einstufung != 12 && Usk_Einstufung != 16 && Usk_Einstufung != 18)
             {
@@ -49,7 +46,7 @@ namespace Game_Launcher_Test
 
         }
 
-        internal void SpielSpeichern(List<ParameterDesSpiels> list)
+        public void SpielSpeichern(List<ParameterDesSpiels> list)
         {
             if (list.Any() == false && ListeSollLeerSein == false)
             {
@@ -74,7 +71,7 @@ namespace Game_Launcher_Test
             
         }
 
-        internal void SpielStarten(string Titel)
+        public void SpielStarten(string Titel)
         {
             var SpielZuÖffnen = ParameterDesSpielsListe.SingleOrDefault(r => r.TitelDesSpiels == Titel);
             if(!File.Exists(SpielZuÖffnen.InstallationsPfad))
@@ -88,7 +85,7 @@ namespace Game_Launcher_Test
             Process.Start(SpielZuÖffnen.InstallationsPfad);
         }
 
-        internal void SpielLöschen(string Titel)
+        public void SpielLöschen(string Titel)
         {
             if(!ParameterDesSpielsListe.Any())
             {
@@ -99,7 +96,7 @@ namespace Game_Launcher_Test
             ListeSollLeerSein = true;
         }
 
-        internal void SpielLaden(string XMLPfad,List<ParameterDesSpiels> list)
+        public void SpielLaden(string XMLPfad,List<ParameterDesSpiels> list)
         {
             if (!File.Exists(XMLPfad))
             {
