@@ -104,14 +104,14 @@ namespace Game_Launcher_Test
             doc.Save(@"..\..\SpieleListe.xml");
             spiel.ParameterDesSpielsListe.Clear();
             spiel.SpielLaden(@"..\..\SpieleListe.xml",spiel.ParameterDesSpielsListe);
-     //       Assert.AreEqual("17.06.2017",spiel.ParameterDesSpielsListe[0].InstallationsDatum);
+            Assert.AreEqual("League of Legends",spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
         [TestMethod]
         [ExpectedException(typeof(FileNotFoundException))]
         public void Liste_Zum_Laden_Nicht_Gefunden_Throws_FileNotFoundException()
         {
             var spiel = new SpieleMethoden();
-            spiel.SpielLaden(@"..\..\SpieleListe.xml", spiel.ParameterDesSpielsListe);
+            spiel.SpielLaden(@"..\..\SpieladeListe.xml", spiel.ParameterDesSpielsListe);
         }
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]

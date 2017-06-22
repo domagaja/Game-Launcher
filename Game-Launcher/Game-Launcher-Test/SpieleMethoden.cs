@@ -114,13 +114,13 @@ namespace Game_Launcher_Test
                 {
                     list.Add(new ParameterDesSpiels()
                     {
-                        TitelDesSpiels = daten.SelectSingleNode("League_of_Legends").Attributes["Titel"].InnerText.Replace(" ", "_"),
-                        InstallationsDatum = daten.SelectSingleNode("League_of_Legends").Attributes["InstallationsDatum"].InnerText.Replace(" ", "_"),
-                        ZuletztGespielt = daten.SelectSingleNode("League_of_Legends").Attributes["ZuletztGespielt"].InnerText.Replace(" ", "_"),
-                        InstallationsPfad = daten.SelectSingleNode("League_of_Legends").Attributes["InstallationsPfad"].InnerText.Replace(" ", "_"),
-                        Kategorie = daten.SelectSingleNode("League_of_Legends").Attributes["Kategorie"].InnerText.Replace(" ", "_"),
-                        Publisher = daten.SelectSingleNode("League_of_Legends").Attributes["Publisher"].InnerText.Replace(" ", "_"),
-                        UskEinstufung = Convert.ToInt32(daten.SelectSingleNode("League_of_Legends").Attributes["UskEinstufung"].InnerText.Replace(" ", "_"))
+                        TitelDesSpiels = daten.Attributes["Titel"].InnerText.Replace("_", " "),
+                        InstallationsDatum = daten.Attributes["Installations_Datum"].InnerText.Replace("_", " "),
+                        ZuletztGespielt = daten.Attributes["ZuletztGespielt"].InnerText.Replace(" ", "_"),
+                        InstallationsPfad = daten.Attributes["InstallationsPfad"].InnerText.Replace(" ", "_"),
+                        Kategorie = daten.Attributes["Kategorie"].InnerText.Replace(" ", "_"),
+                        Publisher = daten.Attributes["Publisher"].InnerText.Replace(" ", "_"),
+                        UskEinstufung = Convert.ToInt32(daten.Attributes["UskEinstufung"].InnerText.Replace(" ", "_"))
                     });
                 }
             }
