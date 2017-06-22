@@ -59,7 +59,24 @@ namespace Game_Launcher_Test
                 UskEinstufung = 12
             });
             spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
-            
+            spiel.ParameterDesSpielsListe.Clear();
+            XmlDocument doc = new XmlDocument();
+            doc.Load(@"..\..\SpieleListe.xml");
+            XmlElement root = doc.DocumentElement;
+            foreach (XmlNode daten in root.ChildNodes)
+            {
+                spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+                {
+                    TitelDesSpiels = daten.Attributes["Titel"].InnerText.Replace("_", " "),
+                    InstallationsDatum = daten.Attributes["Installations_Datum"].InnerText.Replace("_", " "),
+                    ZuletztGespielt = daten.Attributes["ZuletztGespielt"].InnerText.Replace(" ", "_"),
+                    InstallationsPfad = daten.Attributes["InstallationsPfad"].InnerText.Replace(" ", "_"),
+                    Kategorie = daten.Attributes["Kategorie"].InnerText.Replace(" ", "_"),
+                    Publisher = daten.Attributes["Publisher"].InnerText.Replace(" ", "_"),
+                    UskEinstufung = Convert.ToInt32(daten.Attributes["UskEinstufung"].InnerText.Replace(" ", "_"))
+                });
+            }
+            Assert.AreEqual("League of Legends",spiel.ParameterDesSpielsListe[0].TitelDesSpiels);
         }
 
         [TestMethod]
@@ -124,9 +141,17 @@ namespace Game_Launcher_Test
         public void Element_Löschen_TestMethod()
         {
             var spiel = new SpieleMethoden();
-            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
-            spiel.SpielLöschen("Tibia");
-            //   spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
+            spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+            {
+                TitelDesSpiels = "League of Legends",
+                InstallationsDatum = "17.06.2017",
+                ZuletztGespielt = "18.06.2017",
+                InstallationsPfad = @"C:\League of Legends\leagueClient.exe",
+                Kategorie = "MOBA",
+                Publisher = "Riot Games",
+                UskEinstufung = 12
+            });
+            spiel.SpielLöschen("League of Legends");
             Assert.AreEqual(0, spiel.ParameterDesSpielsListe.Count);
         }
         [TestMethod]
@@ -134,8 +159,17 @@ namespace Game_Launcher_Test
         public void Spiel_Aus_einem_Nicht_existierenden_Pfad_Starten_throws_FileNotFoundException()
         {
             var spiel = new SpieleMethoden();
-            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"hansus", "MMORPG", "Cipsoft", 12);
-            spiel.SpielStarten("Tibia");
+            spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+            {
+                TitelDesSpiels = "League of Legends",
+                InstallationsDatum = "17.06.2017",
+                ZuletztGespielt = "18.06.2017",
+                InstallationsPfad = @"Falscher\Pfad",
+                Kategorie = "MOBA",
+                Publisher = "Riot Games",
+                UskEinstufung = 12
+            });
+            spiel.SpielStarten("League of Legends");
         }
         [TestMethod]
         [ExpectedException(typeof(NullReferenceException))]
@@ -148,8 +182,17 @@ namespace Game_Launcher_Test
         public void Spiel_Starten_TestMethod()
         {
             var spiel = new SpieleMethoden();
-            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
-            spiel.SpielStarten("Tibia");
+            spiel.ParameterDesSpielsListe.Add(new ParameterDesSpiels()
+            {
+                TitelDesSpiels = "League of Legends",
+                InstallationsDatum = "17.06.2017",
+                ZuletztGespielt = "18.06.2017",
+                InstallationsPfad = @"C:\League of Legends\leagueClient.exe",
+                Kategorie = "MOBA",
+                Publisher = "Riot Games",
+                UskEinstufung = 12
+            });
+            spiel.SpielStarten("League of Legends");
             Process currentProcess = Process.GetCurrentProcess();
             Assert.AreEqual("League of Legends (32 Bit)", currentProcess.StartInfo.FileName = "League of Legends (32 Bit)");
         }
