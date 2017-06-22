@@ -36,7 +36,6 @@
             // RefreshTimer
             // 
             this.RefreshTimer.Enabled = true;
-            this.RefreshTimer.Interval = 10;
             this.RefreshTimer.Tick += new System.EventHandler(this.RefreshTimer_Tick);
             // 
             // SpieleListeBox
@@ -46,14 +45,12 @@
             this.SpieleListeBox.Name = "SpieleListeBox";
             this.SpieleListeBox.Size = new System.Drawing.Size(422, 368);
             this.SpieleListeBox.TabIndex = 0;
-            this.SpieleListeBox.SelectedIndexChanged += new System.EventHandler(this.SpieleListeBox_SelectedIndexChanged);
-            this.SpieleListeBox.DisplayMemberChanged += new System.EventHandler(this.SpieleListeBox_DisplayMemberChanged);
-            this.SpieleListeBox.SelectedValueChanged += new System.EventHandler(this.SpieleListeBox_SelectedValueChanged);
             // 
             // Game_Launcher_GUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Game_Launcher_Bibliothek1.Properties.Resources.Hintergrund;
             this.ClientSize = new System.Drawing.Size(735, 501);
             this.Controls.Add(this.SpieleListeBox);
             this.Name = "Game_Launcher_GUI";

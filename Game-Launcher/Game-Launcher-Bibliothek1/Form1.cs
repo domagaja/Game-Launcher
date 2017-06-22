@@ -19,39 +19,31 @@ namespace Game_Launcher_Bibliothek1
         int _cursX = 0;
         int _cursY = 0;
 #endif
+        SpieleMethoden spiel = new SpieleMethoden();
         public Game_Launcher_GUI()
         {
             InitializeComponent();
             
             
         }
-        //public void ListeAktualisieren()
-        //{
-        //    SpieleMethoden spiel = new SpieleMethoden();
-        //    spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
-        //    spiel.SpielLaden(spiel.ParameterDesSpielsListe);
-        //    SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
-        //    SpieleListeBox.DisplayMember = "Titel";
-        //}
-        private void Form1_Load(object sender, EventArgs e)
+
+        public void ListeAktualisieren()
         {
-            DoubleBuffered = true;
-            Paint += new PaintEventHandler(Form1_Paint);
-            SpieleMethoden spiel = new SpieleMethoden();
-            spiel.SpielHinzufügen("Tibia", "14.06.1995", "07.06.2017", @"C:\League of Legends\leagueClient.exe", "MMORPG", "Cipsoft", 12);
-            spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
             spiel.ParameterDesSpielsListe.Clear();
             spiel.ListeSollLeerSein = true;
             spiel.SpielLaden(spiel.ParameterDesSpielsListe);
             SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
-          
-
-
-            //  ListeAktualisieren();
+            SpieleListeBox.DisplayMember = "TitelDesSpiels";
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            DoubleBuffered = true;
+            Paint += new PaintEventHandler(Form1_Paint);
+            ListeAktualisieren();
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            BackgroundImage = Properties.Resources.Hintergrund;
+            //BackgroundImage = Properties.Resources.Hintergrund;
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 10, 457);
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 110, 457);
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 210, 457);
@@ -107,21 +99,6 @@ namespace Game_Launcher_Bibliothek1
             {
                 MessageBox.Show("Spiel Starten");
             }
-        }
-
-        private void SpieleListeBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-                       SpieleListeBox.DisplayMember = "TitelDesSpiels";
-        }
-
-        private void SpieleListeBox_SelectedValueChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void SpieleListeBox_DisplayMemberChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

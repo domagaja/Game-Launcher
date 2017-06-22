@@ -102,10 +102,15 @@ namespace Game_Launcher_Bibliothek1
             {
                 throw new ArgumentNullException("Die Liste die du laden willst existiert nicht, bruh");     
             }
-            else
-            {
                 XmlDocument doc = new XmlDocument();
+            try
+            {                
                 doc.Load(@"..\..\SpieleListe.xml");
+            }
+                catch(Exception)
+            {
+                
+            }
                 XmlElement root = doc.DocumentElement;
                 foreach (XmlNode daten in root.ChildNodes)
                 {
@@ -120,7 +125,6 @@ namespace Game_Launcher_Bibliothek1
                         UskEinstufung = Convert.ToInt32(daten.Attributes["UskEinstufung"].InnerText.Replace(" ", "_"))
                     });
                 }
-            }
         }
     }
 }
