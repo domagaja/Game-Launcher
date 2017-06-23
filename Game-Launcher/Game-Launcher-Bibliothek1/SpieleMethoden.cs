@@ -73,29 +73,24 @@ namespace Game_Launcher_Bibliothek1
             
         }
 
-        public void SpielStarten(string Titel)
+        public void SpielStarten(string installpfad)
         {
-            var SpielZuÖffnen = ParameterDesSpielsListe.SingleOrDefault(r => r.TitelDesSpiels == Titel);
-            if(!File.Exists(SpielZuÖffnen.InstallationsPfad))
+        //    var SpielZuÖffnen = ParameterDesSpielsListe.SingleOrDefault(r => r.TitelDesSpiels == Titel);
+            if(!File.Exists(installpfad))
             {
                 throw new FileNotFoundException("Bruh, dieses Spiel existiert an diesem Ort nicht");
             }
-            if(SpielZuÖffnen.InstallationsPfad.Length == 0)
-            {
-
-            }
-            Process.Start(SpielZuÖffnen.InstallationsPfad);
+            Process.Start(installpfad);
         }
 
-        public void SpielLöschen(string Titel)
+        public void SpielLöschen(int index)
         {
-            if(!ParameterDesSpielsListe.Any())
+            if (index > ParameterDesSpielsListe.Count - 1)
             {
-                throw new ArgumentException("Es gibt nichts zum löschen, da die liste leer ist");
+                throw new IndexOutOfRangeException();
             }
-            var ItemZuLöschen = ParameterDesSpielsListe.SingleOrDefault(r => r.TitelDesSpiels == Titel);
-            ParameterDesSpielsListe.Remove(ItemZuLöschen);
-            ListeSollLeerSein = true;
+            ParameterDesSpielsListe.RemoveAt(index);
+             ListeSollLeerSein = true;
         }
 
         public void SpielLaden(List<ParameterDesSpiels> list)

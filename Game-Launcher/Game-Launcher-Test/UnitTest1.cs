@@ -46,11 +46,11 @@ namespace Game_Launcher_Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentException))]
+        [ExpectedException(typeof(IndexOutOfRangeException))]
         public void Element_aus_der_Liste_Löschen_throws_ArgumentException()
         {
             var spiel = new SpieleMethoden();
-            spiel.SpielLöschen("Tibia");
+            spiel.SpielLöschen(6456);
         }
 
         [TestMethod]
@@ -72,11 +72,11 @@ namespace Game_Launcher_Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(NullReferenceException))]
+        [ExpectedException(typeof(FileNotFoundException))]
         public void Spiel_besitzt_kein_Pfad_Throws_NullReferenceException()
         {
             var spiel = new SpieleMethoden();
-            spiel.SpielStarten("Akte_X");
+            spiel.SpielStarten(@"");
         }
 
         [TestMethod]
@@ -185,7 +185,7 @@ namespace Game_Launcher_Test
                 Publisher = "Riot Games",
                 UskEinstufung = 12
             });
-            spiel.SpielLöschen("League of Legends");
+            spiel.SpielLöschen(0);
             Assert.AreEqual(0, spiel.ParameterDesSpielsListe.Count);
         }
 
@@ -203,7 +203,7 @@ namespace Game_Launcher_Test
                 Publisher = "Riot Games",
                 UskEinstufung = 12
             });
-            spiel.SpielStarten("League of Legends");
+            spiel.SpielStarten(@"C:\League of Legends\leagueClient.exe");
             Process currentProcess = Process.GetCurrentProcess();
             Assert.AreEqual("League of Legends (32 Bit)", currentProcess.StartInfo.FileName = "League of Legends (32 Bit)");
         }

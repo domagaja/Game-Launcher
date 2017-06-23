@@ -68,16 +68,13 @@ namespace Game_Launcher_Bibliothek1
         {
             if (e.X > 10 && e.X < 92 && e.Y > 217 && e.Y < 251)
             {
+               
                 spiel.SpielHinzufügen(Titel.Text,InstallationsDatum.Text,ZuletztGespielt.Text,InstallationsPfad.Text,Kategorie.Text,Publisher.Text,Convert.ToInt32(USKEinstufung.Text));
                 spiel.SpielLaden(spiel.ParameterDesSpielsListe);
                 spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
-                spiel.SpielLaden(spiel.ParameterDesSpielsListe);
             }
             else if (e.X > 193 && e.X < 273 && e.Y > 217 && e.Y < 251)
             {
-                
-                Game_Launcher_GUI form1 = new Game_Launcher_GUI();
-                form1.ListeAktualisieren();
                 Close();
             }
         }
@@ -94,21 +91,6 @@ namespace Game_Launcher_Bibliothek1
             {
                 InstallationsPfad.Text = FD.FileName;
             }
-        }
-
-        private void folderBrowserDialog1_HelpRequest(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Game_Launcher_SpielHinzufügen_TextChanged(object sender, EventArgs e)
-        {
-            Refresh();
-        }
-
-        private void InstallationsPfad_TextChanged(object sender, EventArgs e)
-        {
-            Refresh();
         }
     }
 }

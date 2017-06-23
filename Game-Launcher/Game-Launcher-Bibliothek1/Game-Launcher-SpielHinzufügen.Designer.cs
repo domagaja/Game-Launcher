@@ -71,7 +71,6 @@
             this.InstallationsPfad.Size = new System.Drawing.Size(100, 20);
             this.InstallationsPfad.TabIndex = 3;
             this.InstallationsPfad.Click += new System.EventHandler(this.InstallationsPfad_Durchsuchen_Click);
-            this.InstallationsPfad.TextChanged += new System.EventHandler(this.InstallationsPfad_TextChanged);
             // 
             // Kategorie
             // 
@@ -102,7 +101,6 @@
             // 
             // folderBrowserDialog1
             // 
-            this.folderBrowserDialog1.HelpRequest += new System.EventHandler(this.folderBrowserDialog1_HelpRequest);
             // 
             // Game_Launcher_SpielHinzufügen
             // 
@@ -121,7 +119,6 @@
             this.Name = "Game_Launcher_SpielHinzufügen";
             this.Text = "Game_Launcher_SpielHinzufügen";
             this.Load += new System.EventHandler(this.Game_Launcher_SpielHinzufügen_Load);
-            this.TextChanged += new System.EventHandler(this.Game_Launcher_SpielHinzufügen_TextChanged);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Game_Launcher_SpielHinzufügen_Click);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Game_Launcher_SpielHinzufügen_MoveMouse);
             this.ResumeLayout(false);
