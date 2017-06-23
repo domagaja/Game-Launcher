@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.SpieleListeBox = new System.Windows.Forms.ListBox();
+            this.spieleMethodenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.spieleMethodenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // RefreshTimer
@@ -45,6 +49,15 @@
             this.SpieleListeBox.Name = "SpieleListeBox";
             this.SpieleListeBox.Size = new System.Drawing.Size(422, 368);
             this.SpieleListeBox.TabIndex = 0;
+            this.SpieleListeBox.SelectedIndexChanged += new System.EventHandler(this.SpieleListbox_SelectedIndexChanged);
+            // 
+            // spieleMethodenBindingSource
+            // 
+            this.spieleMethodenBindingSource.DataSource = typeof(Game_Launcher_Bibliothek1.SpieleMethoden);
+            // 
+            // programBindingSource
+            // 
+            this.programBindingSource.DataSource = typeof(Game_Launcher_Bibliothek1.Program);
             // 
             // Game_Launcher_GUI
             // 
@@ -58,6 +71,8 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Game_Launcher_MouseClick);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Game_Launcher_MouseMove);
+            ((System.ComponentModel.ISupportInitialize)(this.spieleMethodenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -66,6 +81,8 @@
 
         private System.Windows.Forms.Timer RefreshTimer;
         private System.Windows.Forms.ListBox SpieleListeBox;
+        private System.Windows.Forms.BindingSource spieleMethodenBindingSource;
+        private System.Windows.Forms.BindingSource programBindingSource;
     }
 }
 

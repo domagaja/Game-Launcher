@@ -37,10 +37,11 @@ namespace Game_Launcher_Test
         }
 
         [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public void Liste_Zum_Laden_Nicht_Gefunden_Throws_FileNotFoundException()
+        [ExpectedException(typeof(FileNotFoundException))]
+        public void Liste_Zum_Laden_Nicht_Gefunden_Throws_ArgumentException()
         {
             var spiel = new SpieleMethoden();
+            File.Delete(@"..\..\SpieleListe.xml");
             spiel.SpielLaden(spiel.ParameterDesSpielsListe);
         }
 

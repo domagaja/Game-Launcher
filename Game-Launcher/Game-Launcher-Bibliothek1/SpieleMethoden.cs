@@ -20,6 +20,8 @@ namespace Game_Launcher_Bibliothek1
     }
     public class SpieleMethoden
     {
+        XmlDocument doc = new XmlDocument();
+        public bool ErstesLaden =true;
         public bool ListeSollLeerSein = false;
         public List<ParameterDesSpiels> ParameterDesSpielsListe = new List<ParameterDesSpiels>();
 
@@ -53,7 +55,7 @@ namespace Game_Launcher_Bibliothek1
                 throw new ArgumentNullException("bruh, die Liste ist leer. Speichern nicht möglich :(");
             }
             ListeSollLeerSein = false;
-            XmlDocument doc = new XmlDocument();
+           
             XmlNode myRoot;
             doc.AppendChild(myRoot = doc.CreateElement("Spiele"));
             for (int i = 0; i < list.Count; i++)
@@ -97,34 +99,54 @@ namespace Game_Launcher_Bibliothek1
         }
 
         public void SpielLaden(List<ParameterDesSpiels> list)
-        {
-            if (!list.Any() && ListeSollLeerSein == false)
+        {     
+            XmlDocument doc = new XmlDocument();
+            if(!File.Exists(@"..\..\SpieleListe.xml"))
             {
-                throw new ArgumentNullException("Die Liste die du laden willst existiert nicht, bruh");     
+                throw new FileNotFoundException("bruh, die Liste ist leer");
             }
-                XmlDocument doc = new XmlDocument();
-            try
-            {                
-                doc.Load(@"..\..\SpieleListe.xml");
-            }
-                catch(Exception)
-            {
-                
-            }
-                XmlElement root = doc.DocumentElement;
-                foreach (XmlNode daten in root.ChildNodes)
+                try
                 {
-                    list.Add(new ParameterDesSpiels()
+                    if(ErstesLaden == true)
                     {
-                        TitelDesSpiels = daten.Attributes["Titel"].InnerText.Replace("_", " "),
-                        InstallationsDatum = daten.Attributes["Installations_Datum"].InnerText.Replace("_", " "),
-                        ZuletztGespielt = daten.Attributes["ZuletztGespielt"].InnerText.Replace(" ", "_"),
-                        InstallationsPfad = daten.Attributes["InstallationsPfad"].InnerText.Replace(" ", "_"),
-                        Kategorie = daten.Attributes["Kategorie"].InnerText.Replace(" ", "_"),
-                        Publisher = daten.Attributes["Publisher"].InnerText.Replace(" ", "_"),
-                        UskEinstufung = Convert.ToInt32(daten.Attributes["UskEinstufung"].InnerText.Replace(" ", "_"))
-                    });
+                    try
+                    {
+                        doc.Load(@"..\..\SpieleListe.xml");
+                        ErstesLaden = false;
+                        
+                    }
+                    catch
+                    {
+                        ErstesLaden = false;
+                        return;
+                    }
+                        
+                    }
+                    if(ListeSollLeerSein==true)
+                    {
+                        doc.Load(@"..\..\SpieleListe.xml");
+                    }
+               doc.Load(@"..\..\SpieleListe.xml");
+            }
+                catch
+                {
+                    throw new XmlException();
                 }
+            XmlElement root =  doc.DocumentElement;
+            list = ParameterDesSpielsListe;
+            foreach (XmlNode daten in root.ChildNodes)
+            {
+                list.Add(new ParameterDesSpiels()
+                {
+                    TitelDesSpiels = daten.Attributes["Titel"].InnerText.Replace("_", " "),
+                    InstallationsDatum = daten.Attributes["Installations_Datum"].InnerText.Replace("_", " "),
+                    ZuletztGespielt = daten.Attributes["ZuletztGespielt"].InnerText.Replace(" ", "_"),
+                    InstallationsPfad = daten.Attributes["InstallationsPfad"].InnerText.Replace(" ", "_"),
+                    Kategorie = daten.Attributes["Kategorie"].InnerText.Replace(" ", "_"),
+                    Publisher = daten.Attributes["Publisher"].InnerText.Replace(" ", "_"),
+                    UskEinstufung = Convert.ToInt32(daten.Attributes["UskEinstufung"].InnerText.Replace(" ", "_"))
+                });
+            }
         }
     }
 }

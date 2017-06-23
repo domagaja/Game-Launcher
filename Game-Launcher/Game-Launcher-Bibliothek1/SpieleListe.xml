@@ -1,1 +1,18 @@
-<Spiele />
+<Spiele>
+  <blabla Titel="blabla" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League of Legends\api-ms-win-core-debug-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <niggggga Titel="niggggga" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-debug-l1-1-0.dll" Kategorie="asda" Publisher="asd" UskEinstufung="12" />
+  <weißas Titel="weißas" Installations_Datum="as" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-handle-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <schwarzas Titel="schwarzas" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-errorhandling-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <niga Titel="niga" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-file-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <altassss Titel="altassss" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-file-l2-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <philipp Titel="philipp" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-handle-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <dad Titel="dad" Installations_Datum="ada" ZuletztGespielt="ada" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-file-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <mamaam Titel="mamaam" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-file-l2-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <bruda Titel="bruda" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-file-l1-1-0.dll" Kategorie="dad" Publisher="ada" UskEinstufung="12" />
+  <Franz Titel="Franz" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-errorhandling-l1-1-0.dll" Kategorie="ada" Publisher="ada" UskEinstufung="12" />
+  <Günther Titel="Günther" Installations_Datum="asdas" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-debug-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <ddd Titel="ddd" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-handle-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <adad Titel="adad" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-errorhandling-l1-1-0.dll" Kategorie="ddd" Publisher="ddd" UskEinstufung="12" />
+  <dada Titel="dada" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-debug-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+  <halso Titel="halso" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League_of_Legends\api-ms-win-core-console-l1-1-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
+</Spiele>

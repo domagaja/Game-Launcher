@@ -1,4 +1,4 @@
-﻿#define Scale
+﻿//#define Scale
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,27 +23,32 @@ namespace Game_Launcher_Bibliothek1
         public Game_Launcher_GUI()
         {
             InitializeComponent();
-            
-            
+           
         }
 
         public void ListeAktualisieren()
         {
-            spiel.ParameterDesSpielsListe.Clear();
-            spiel.ListeSollLeerSein = true;
+            spiel.ErstesLaden = false;
+         //   spiel.ParameterDesSpielsListe.Clear();
             spiel.SpielLaden(spiel.ParameterDesSpielsListe);
+            
             SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
             SpieleListeBox.DisplayMember = "TitelDesSpiels";
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
             Paint += new PaintEventHandler(Form1_Paint);
+            //spiel.ParameterDesSpielsListe.Clear();
+            //spiel.SpielLaden(spiel.ParameterDesSpielsListe);
+            //SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
+            //SpieleListeBox.DisplayMember = "TitelDesSpiels";
             ListeAktualisieren();
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            //BackgroundImage = Properties.Resources.Hintergrund;
+            //BackgroundImage = Properties.Resources.Hintergrund;// Listbox items werden verdeckt
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 10, 457);
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 110, 457);
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 210, 457);
@@ -63,11 +68,14 @@ namespace Game_Launcher_Bibliothek1
             Font _font = new System.Drawing.Font("Stencil", 12, FontStyle.Regular);
             TextRenderer.DrawText(dc, "X=" + _cursX.ToString() + ":" + "Y=" + _cursY.ToString(), _font, new Rectangle(0, 0, 120, 20), SystemColors.ControlText, flags);
 #endif
+            
             base.OnPaint(e);
+            
         }
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
             Refresh();
+            SpieleListeBox.Refresh();
         }
 
         private void Game_Launcher_MouseMove(object sender, MouseEventArgs e)
@@ -100,5 +108,16 @@ namespace Game_Launcher_Bibliothek1
                 MessageBox.Show("Spiel Starten");
             }
         }
+
+        private void SpieleListbox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+         //   SpieleListeBox.Refresh();
+         //   ListeAktualisieren();
+        }
+
+        //private void SpieleListeBox_MouseMove(object sender, MouseEventArgs e)
+        //{
+
+        //}
     }
 }
