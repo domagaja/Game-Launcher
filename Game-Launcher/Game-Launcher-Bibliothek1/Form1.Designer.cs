@@ -31,8 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.RefreshTimer = new System.Windows.Forms.Timer(this.components);
             this.SpieleListeBox = new System.Windows.Forms.ListBox();
-            this.spieleMethodenBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.TitelBox = new System.Windows.Forms.TextBox();
             this.InstallationsDatumBox = new System.Windows.Forms.TextBox();
             this.ZuletztGespieltBox = new System.Windows.Forms.TextBox();
@@ -40,6 +38,8 @@
             this.KategorieBox = new System.Windows.Forms.TextBox();
             this.PublisherBox = new System.Windows.Forms.TextBox();
             this.UskEinstufungBox = new System.Windows.Forms.TextBox();
+            this.spieleMethodenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.programBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.spieleMethodenBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.programBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -58,6 +58,55 @@
             this.SpieleListeBox.TabIndex = 0;
             this.SpieleListeBox.SelectedIndexChanged += new System.EventHandler(this.SpieleListeBox_SelectedIndexChanged);
             // 
+            // TitelBox
+            // 
+            this.TitelBox.Location = new System.Drawing.Point(567, 104);
+            this.TitelBox.Name = "TitelBox";
+            this.TitelBox.Size = new System.Drawing.Size(100, 20);
+            this.TitelBox.TabIndex = 1;
+            // 
+            // InstallationsDatumBox
+            // 
+            this.InstallationsDatumBox.Location = new System.Drawing.Point(567, 130);
+            this.InstallationsDatumBox.Name = "InstallationsDatumBox";
+            this.InstallationsDatumBox.Size = new System.Drawing.Size(100, 20);
+            this.InstallationsDatumBox.TabIndex = 2;
+            // 
+            // ZuletztGespieltBox
+            // 
+            this.ZuletztGespieltBox.Location = new System.Drawing.Point(567, 156);
+            this.ZuletztGespieltBox.Name = "ZuletztGespieltBox";
+            this.ZuletztGespieltBox.Size = new System.Drawing.Size(100, 20);
+            this.ZuletztGespieltBox.TabIndex = 3;
+            // 
+            // InstallPfadBox
+            // 
+            this.InstallPfadBox.Location = new System.Drawing.Point(567, 182);
+            this.InstallPfadBox.Name = "InstallPfadBox";
+            this.InstallPfadBox.Size = new System.Drawing.Size(100, 20);
+            this.InstallPfadBox.TabIndex = 4;
+            // 
+            // KategorieBox
+            // 
+            this.KategorieBox.Location = new System.Drawing.Point(567, 208);
+            this.KategorieBox.Name = "KategorieBox";
+            this.KategorieBox.Size = new System.Drawing.Size(100, 20);
+            this.KategorieBox.TabIndex = 5;
+            // 
+            // PublisherBox
+            // 
+            this.PublisherBox.Location = new System.Drawing.Point(567, 234);
+            this.PublisherBox.Name = "PublisherBox";
+            this.PublisherBox.Size = new System.Drawing.Size(100, 20);
+            this.PublisherBox.TabIndex = 6;
+            // 
+            // UskEinstufungBox
+            // 
+            this.UskEinstufungBox.Location = new System.Drawing.Point(567, 260);
+            this.UskEinstufungBox.Name = "UskEinstufungBox";
+            this.UskEinstufungBox.Size = new System.Drawing.Size(100, 20);
+            this.UskEinstufungBox.TabIndex = 7;
+            // 
             // spieleMethodenBindingSource
             // 
             this.spieleMethodenBindingSource.DataSource = typeof(Game_Launcher_Bibliothek1.SpieleMethoden);
@@ -65,55 +114,6 @@
             // programBindingSource
             // 
             this.programBindingSource.DataSource = typeof(Game_Launcher_Bibliothek1.Program);
-            // 
-            // TitelBox
-            // 
-            this.TitelBox.Location = new System.Drawing.Point(593, 104);
-            this.TitelBox.Name = "TitelBox";
-            this.TitelBox.Size = new System.Drawing.Size(100, 20);
-            this.TitelBox.TabIndex = 1;
-            // 
-            // InstallationsDatumBox
-            // 
-            this.InstallationsDatumBox.Location = new System.Drawing.Point(593, 130);
-            this.InstallationsDatumBox.Name = "InstallationsDatumBox";
-            this.InstallationsDatumBox.Size = new System.Drawing.Size(100, 20);
-            this.InstallationsDatumBox.TabIndex = 2;
-            // 
-            // ZuletztGespieltBox
-            // 
-            this.ZuletztGespieltBox.Location = new System.Drawing.Point(593, 157);
-            this.ZuletztGespieltBox.Name = "ZuletztGespieltBox";
-            this.ZuletztGespieltBox.Size = new System.Drawing.Size(100, 20);
-            this.ZuletztGespieltBox.TabIndex = 3;
-            // 
-            // InstallPfadBox
-            // 
-            this.InstallPfadBox.Location = new System.Drawing.Point(593, 184);
-            this.InstallPfadBox.Name = "InstallPfadBox";
-            this.InstallPfadBox.Size = new System.Drawing.Size(100, 20);
-            this.InstallPfadBox.TabIndex = 4;
-            // 
-            // KategorieBox
-            // 
-            this.KategorieBox.Location = new System.Drawing.Point(593, 211);
-            this.KategorieBox.Name = "KategorieBox";
-            this.KategorieBox.Size = new System.Drawing.Size(100, 20);
-            this.KategorieBox.TabIndex = 5;
-            // 
-            // PublisherBox
-            // 
-            this.PublisherBox.Location = new System.Drawing.Point(593, 238);
-            this.PublisherBox.Name = "PublisherBox";
-            this.PublisherBox.Size = new System.Drawing.Size(100, 20);
-            this.PublisherBox.TabIndex = 6;
-            // 
-            // UskEinstufungBox
-            // 
-            this.UskEinstufungBox.Location = new System.Drawing.Point(593, 264);
-            this.UskEinstufungBox.Name = "UskEinstufungBox";
-            this.UskEinstufungBox.Size = new System.Drawing.Size(100, 20);
-            this.UskEinstufungBox.TabIndex = 7;
             // 
             // Game_Launcher_GUI
             // 

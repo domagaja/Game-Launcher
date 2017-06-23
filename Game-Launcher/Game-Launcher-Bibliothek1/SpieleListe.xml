@@ -1,4 +1,1 @@
-<Spiele>
-  <kaka Titel="kaka" Installations_Datum="asd" ZuletztGespielt="asd" InstallationsPfad="C:\League of Legends\api-ms-win-core-file-l1-2-0.dll" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
-  <aadda Titel="aadda" Installations_Datum="adad" ZuletztGespielt="adad" InstallationsPfad="C:\League_of_Legends\LeagueClient.exe" Kategorie="asd" Publisher="asd" UskEinstufung="12" />
-</Spiele>
+<Spiele />
