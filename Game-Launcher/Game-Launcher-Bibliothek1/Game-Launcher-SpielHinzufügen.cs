@@ -21,6 +21,7 @@ namespace Game_Launcher_Bibliothek1
         public Game_Launcher_SpielHinzufügen()
         {
             InitializeComponent();
+            InstallationsPfad.Text = "Hier Klicken";
         }
 
         private void Game_Launcher_SpielHinzufügen_Load(object sender, EventArgs e)

@@ -8,6 +8,9 @@ using Game_Launcher_Bibliothek1;
 
 namespace Game_Launcher_Test
 {
+    /// <summary>
+    /// Meine Testklasse
+    /// </summary>
     [TestClass]
     public class UnitTest1
     {
@@ -47,7 +50,7 @@ namespace Game_Launcher_Test
 
         [TestMethod]
         [ExpectedException(typeof(IndexOutOfRangeException))]
-        public void Element_aus_der_Liste_Löschen_throws_ArgumentException()
+        public void Element_aus_der_Liste_Löschen_throws_InderOutOfRangeException()
         {
             var spiel = new SpieleMethoden();
             spiel.SpielLöschen(6456);
@@ -68,15 +71,7 @@ namespace Game_Launcher_Test
                 Publisher = "Riot Games",
                 UskEinstufung = 12
             });
-            spiel.SpielStarten("League of Legends");
-        }
-
-        [TestMethod]
-        [ExpectedException(typeof(FileNotFoundException))]
-        public void Spiel_besitzt_kein_Pfad_Throws_NullReferenceException()
-        {
-            var spiel = new SpieleMethoden();
-            spiel.SpielStarten(@"");
+            spiel.SpielStarten(spiel.ParameterDesSpielsListe[0].InstallationsPfad);
         }
 
         [TestMethod]

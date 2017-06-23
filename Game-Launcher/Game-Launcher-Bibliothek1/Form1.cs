@@ -20,14 +20,12 @@ namespace Game_Launcher_Bibliothek1
         int _cursX = 0;
         int _cursY = 0;
 #endif
-       
         BindingSource bs = new BindingSource();
         public Game_Launcher_GUI()
         {
             InitializeComponent();
             ListeAktualisieren();
         }
-
         public void ListeAktualisieren()
         {
             SpieleMethoden spiel = new SpieleMethoden();
@@ -36,16 +34,21 @@ namespace Game_Launcher_Bibliothek1
             bs.DataSource = spiel.ParameterDesSpielsListe;
             SpieleListeBox.DisplayMember = "TitelDesSpiels";
             SpieleListeBox.DataSource = bs;
-
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             DoubleBuffered = true;
             Paint += new PaintEventHandler(Form1_Paint); 
+            
         }
+        /// <summary>
+        /// Meine GDI+ Oberfläche
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            //BackgroundImage = Properties.Resources.Hintergrund;// Listbox items werden verdeckt
+            //BackgroundImage = Properties.Resources.Hintergrund;// Listbox items werden verdeckt durch den Hintergrund
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 10, 457);
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 110, 457);
             e.Graphics.DrawImage(Properties.Resources.buttonbetter, 210, 457);
@@ -69,23 +72,37 @@ namespace Game_Launcher_Bibliothek1
             base.OnPaint(e);
             
         }
+        /// <summary>
+        /// Refresht in einem bestimmten Zeitabstand die Oberfläche
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
             Refresh();
             SpieleListeBox.Refresh();
 
         }
-
+        /// <summary>
+        /// MouseMove Methode wird zur Mauspositionsabfrage benutzt
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Game_Launcher_MouseMove(object sender, MouseEventArgs e)
         {
 #if Scale
+            
             _cursX = e.X;
             _cursY = e.Y;
 #endif
-            
+
         }
         
-
+        /// <summary>
+        /// Die ButtonAbfrage
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Game_Launcher_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.X > 10 && e.X < 92 && e.Y > 457 && e.Y < 492)
@@ -113,7 +130,11 @@ namespace Game_Launcher_Bibliothek1
 
             }
         }
-
+        /// <summary>
+        /// Hinzufügen der Elemente in die Boxen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SpieleListeBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             SpieleMethoden spiel = new SpieleMethoden();
