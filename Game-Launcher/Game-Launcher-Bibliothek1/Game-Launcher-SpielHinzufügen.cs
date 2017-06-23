@@ -71,13 +71,13 @@ namespace Game_Launcher_Bibliothek1
                 spiel.SpielHinzufügen(Titel.Text,InstallationsDatum.Text,ZuletztGespielt.Text,InstallationsPfad.Text,Kategorie.Text,Publisher.Text,Convert.ToInt32(USKEinstufung.Text));
                 spiel.SpielLaden(spiel.ParameterDesSpielsListe);
                 spiel.SpielSpeichern(spiel.ParameterDesSpielsListe);
+                spiel.SpielLaden(spiel.ParameterDesSpielsListe);
             }
             else if (e.X > 193 && e.X < 273 && e.Y > 217 && e.Y < 251)
             {
                 
                 Game_Launcher_GUI form1 = new Game_Launcher_GUI();
-                // form1.ListeAktualisieren();
-                
+                form1.ListeAktualisieren();
                 Close();
             }
         }

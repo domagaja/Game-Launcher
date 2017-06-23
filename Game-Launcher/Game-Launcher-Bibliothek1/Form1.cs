@@ -20,20 +20,20 @@ namespace Game_Launcher_Bibliothek1
         int _cursY = 0;
 #endif
         SpieleMethoden spiel = new SpieleMethoden();
+        BindingSource bs = new BindingSource();
         public Game_Launcher_GUI()
         {
             InitializeComponent();
-           
+            spiel.SpielLaden(spiel.ParameterDesSpielsListe);
+            bs.DataSource = spiel.ParameterDesSpielsListe;
+            SpieleListeBox.DisplayMember = "TitelDesSpiels";
+            SpieleListeBox.DataSource = bs;
         }
 
         public void ListeAktualisieren()
         {
             spiel.ErstesLaden = false;
-         //   spiel.ParameterDesSpielsListe.Clear();
-            spiel.SpielLaden(spiel.ParameterDesSpielsListe);
-            
-            SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
-            SpieleListeBox.DisplayMember = "TitelDesSpiels";
+            bs.ResetBindings(false);
 
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -44,7 +44,8 @@ namespace Game_Launcher_Bibliothek1
             //spiel.SpielLaden(spiel.ParameterDesSpielsListe);
             //SpieleListeBox.DataSource = spiel.ParameterDesSpielsListe;
             //SpieleListeBox.DisplayMember = "TitelDesSpiels";
-            ListeAktualisieren();
+            //ListeAktualisieren();
+            
         }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
